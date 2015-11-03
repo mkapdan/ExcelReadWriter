@@ -47,58 +47,7 @@ public class TestMain {
 			System.out.println();
 		}
 
-		writerOperator.createSheet("WriteTest2");
-		writerOperator.prepareColumnHeaderName(header);
-
-		for (ListOfStringData cellData : cellDatas) {
-
-			Row row = writerOperator.createNextRowOnCurrentSheet();
-
-			for (String cell : cellData.getStringCellDatas()) {
-
-				Cell nextCell = writerOperator.createNextCell(row);
-
-				nextCell.setCellValue(cell);
-
-				System.out.print(cell + "\t");
-			}
-			System.out.println();
-		}
-
-		writerOperator.createSheet("WriteTest3");
-		writerOperator.prepareColumnHeaderName(header);
-
-		for (ListOfStringData cellData : cellDatas) {
-
-			Row row = writerOperator.createNextRowOnCurrentSheet();
-
-			for (String cell : cellData.getStringCellDatas()) {
-
-				Cell nextCell = writerOperator.createNextCell(row);
-
-				nextCell.setCellValue(cell);
-
-				System.out.print(cell + "\t");
-			}
-			System.out.println();
-		}
-
-		writerOperator.getSheetAt(0);
-
-		for (ListOfStringData cellData : cellDatas) {
-
-			Row row = writerOperator.createNextRowOnCurrentSheet();
-
-			for (String cell : cellData.getStringCellDatas()) {
-
-				Cell nextCell = writerOperator.createNextCell(row);
-
-				nextCell.setCellValue(cell);
-
-				System.out.print(cell + "\t");
-			}
-			System.out.println();
-		}
+		Set<String> headers=writerOperator.getColumnHeaders(HeadFirstDesign.class);
 
 		FileOutputStream fos = new FileOutputStream(fileoutPath);
 		writerOperator.write(fos);

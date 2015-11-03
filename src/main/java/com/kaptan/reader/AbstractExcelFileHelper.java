@@ -2,8 +2,11 @@ package com.kaptan.reader;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -334,4 +337,18 @@ public abstract class AbstractExcelFileHelper implements ExcelFileReadWriter {
 		return excelData;
 	}
 
+	public <T> Set<String> getColumnHeaders(Class<T> claszz) {
+
+		Set<String> headers = new HashSet<String>();
+		Field[] fields = claszz.getDeclaredFields();
+		System.out.printf("%d fields:%n", fields.length);
+		for (Field field : fields) {
+
+			headers.add(field.getName());
+
+			System.out.printf("%s %s %s%n", Modifier.toString(field.getModifiers()), field.getType().getSimpleName(),
+					field.getName());
+		}
+		return headers;
+	}
 }

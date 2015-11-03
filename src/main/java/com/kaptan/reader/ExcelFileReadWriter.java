@@ -56,4 +56,6 @@ public interface ExcelFileReadWriter {
 	String getSafeName(String proposalName);
 
 	Sheet createSheet(String proposalSheetName);
+
+	<T> Set<String> getColumnHeaders(Class<T> claszz);
 }
